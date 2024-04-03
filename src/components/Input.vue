@@ -5,7 +5,6 @@ export default
 {
     name:"Input",
     emits:["searched"],
-    /* props:["searchString"], */
     data()
     {
         return{
@@ -17,7 +16,6 @@ export default
     {
         searchedName()
         {
-            /* this.$emit('searched', search) */
             store.search = this.search
         }
     },
@@ -29,7 +27,7 @@ export default
 </script>
 
 <template>
-    <input type="text" placeholder="Search..." v-model="search" @keyup="searchedName" > <!-- @keyup="$emit('searched', search)" -->
+    <input type="text" placeholder="Search..." v-model="search" @keyup="searchedName">
 </template>
 
 <style>

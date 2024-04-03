@@ -1,6 +1,7 @@
 <script>
 import Input from "./components/Input.vue";
 import Button from "./components/Button.vue";
+import {store} from "./store.js"
 
 
 export default
@@ -15,7 +16,12 @@ export default
 </script>
 
 <template>
-    <Input/><Button/>
+    <Input/> <Button/>
+    <ul v-if="store.results.length > 0">
+        <li v-for="result in store.results">
+
+        </li>
+    </ul>
 </template>
 
 <style></style>
