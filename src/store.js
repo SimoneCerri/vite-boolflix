@@ -12,10 +12,9 @@ export const store = reactive
 
             axios.get(`https://api.themoviedb.org/3/search/movie?query=${this.search}&api_key=${this.ID}`)
                 .then(response => {
-                    console.log(response.data);
+                    //console.log(response.data);
                     console.log(response.data.results);
                     this.results = response.data.results
-                    console.log(this.results);
                 })
                 .catch(err => {
                     console.error(err.message)
