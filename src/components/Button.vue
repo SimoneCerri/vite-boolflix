@@ -1,5 +1,6 @@
 <script>
-import axios from "axios";
+/* import axios from "axios"; */
+import {store} from "../store.js"
 
 export default
     {
@@ -8,12 +9,12 @@ export default
         data()
         {
             return{
-                ID: "25fe11ffdf5ce5a3da68cfa381752925",
+                /* ID: "25fe11ffdf5ce5a3da68cfa381752925", */
             }
         },
         methods:
         {
-            callApi(ID,search)
+            /* callApi(ID,search)
             {
                 console.log(this.search,this.ID);
 
@@ -26,7 +27,7 @@ export default
                     {
                         console.error(err.message)
                     })
-            }
+            } */
         },
         mounted()
         {
@@ -36,7 +37,7 @@ export default
 </script>
 
 <template>
-    <button @click="callApi()">SEARCH</button>
+    <button @click="store.callApi()">SEARCH</button>
 </template>
 
 <style></style>
