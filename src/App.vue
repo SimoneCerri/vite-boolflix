@@ -35,7 +35,8 @@ export default
             <li>Original title: {{ result.original_title }}</li>
             <li>Language: {{ result.original_language }}</li>
             <li>Vote: {{ result.vote_average }}</li>
-            <li><span class="fi" :class="('fi-')+(result.original_language)"></span></li> <!-- damn () I trouble for hours around them. -->
+            <li><span class="fi" :class="('fi-')+(result.original_language)"></span><span>{{ result.original_language
+                    }}</span></li> <!-- damn () I trouble for hours around them. -->
             <br>
         </ul>
     </div>
@@ -43,4 +44,11 @@ export default
 
 </template>
 
-<style></style>
+<style>
+.fi
+{
+    /* background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat; */
+}
+</style>
