@@ -27,7 +27,7 @@ export default
 </script>
 
 <template>
-    <input type="text" placeholder="Search..." v-model="search" @keyup="searchedName">
+    <input type="text" placeholder="Search..." v-model="search" @keyup="searchedName" @keyup.enter="searchedName;store.callApi()">
 </template>
 
 <style>

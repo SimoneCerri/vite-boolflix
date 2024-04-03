@@ -11,6 +11,12 @@ export default
         {
             Button,
             Input,
+        },
+        data()
+        {
+            return{
+                store,
+            }
         }
     }
 </script>

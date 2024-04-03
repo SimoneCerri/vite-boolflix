@@ -15,7 +15,7 @@ export const store = reactive
                     console.log(response.data);
                     console.log(response.data.results);
                     this.results = response.data.results
-
+                    console.log(this.results);
                 })
                 .catch(err => {
                     console.error(err.message)
