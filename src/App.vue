@@ -15,6 +15,7 @@ export default
         data() {
             return {
                 store,
+                flag:"fi-",
             }
         }
     }
@@ -30,9 +31,13 @@ export default
             <li>Original title: {{ result.original_title }}</li>
             <li>Language: {{ result.original_language }}</li>
             <li>Vote: {{ result.vote_average }}</li>
+            <li><span :class="{flag+result.original_language}">LOL</span></li>
+            <!-- <li>{{ result.original_language }}</li> -->
+            <!-- <li class="fi-it"></li> -->
             <br>
         </ul>
     </div>
+    <!-- <span class="fi fi-gr"></span> <span class="fi fi-gr fis"></span> -->
 
 </template>
 
