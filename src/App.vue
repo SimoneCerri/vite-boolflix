@@ -21,6 +21,7 @@ export default
 </script>
 
 <template>
+    <span>Search a film here and click "SEARCH" or just press enter: </span>
     <Input /> <Button />
     <div v-if="store.results.length > 0">
         <ul v-for="result in store.results">
