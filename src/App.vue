@@ -26,29 +26,26 @@ export default
 </script>
 
 <template>
-    <span>Search a film here and click "SEARCH" or just press enter: </span>
+    <span>Search a film here and click "SEARCH" or just press "enter" after digit: </span>
     <Input /> <Button />
     <div v-if="store.results.length > 0">
         <ul v-for="result in store.results">
             <br>
             <li>Title: {{ result.title }}</li>
             <li>Original title: {{ result.original_title }}</li>
-            <li>Language: {{ result.original_language }}</li>
-            <li>Vote: {{ result.vote_average }}</li>
-            <li><span class="fi" :class="('fi-')+(result.original_language)"></span><span>{{ result.original_language
-                    }}</span></li> <!-- damn () I trouble for hours around them. -->
+            <li>Vote: {{ (result.vote_average).toFixed(1) }}</li>
+            <li>Language: <span class="fi" :class="('fi-')+(result.original_language)"></span></li> <!-- damn () I trouble for hours around them. -->
+            <!-- @TODO: some flags still bugged even if I change codes in "country.json" -->
             <br>
         </ul>
     </div>
-    <!-- <span class="fi fi-gr"></span> <span class="fi fi-gr fis"></span> -->
-
 </template>
 
 <style>
 .fi
 {
-    /* background-size: contain;
+    background-size: contain;
     background-position: 50%;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
 }
 </style>
