@@ -9,6 +9,7 @@ export default
         data()
         {
             return{
+                store,
                 /* ID: "25fe11ffdf5ce5a3da68cfa381752925", */
             }
         },

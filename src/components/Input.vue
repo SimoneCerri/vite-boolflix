@@ -1,4 +1,6 @@
 <script>
+import {store} from "../store.js";
+
 export default
 {
     name:"Input",
@@ -8,13 +10,15 @@ export default
     {
         return{
             search:"",
+            store,
         }
     },
     methods:
     {
         searchedName()
         {
-            this.$emit('searched', search)
+            /* this.$emit('searched', search) */
+            store.search = this.search
         }
     },
     computed:
