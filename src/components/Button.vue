@@ -5,15 +5,22 @@ export default
     {
         name: "Button",
         props: ["search"],
+        data()
+        {
+            return{
+                ID: "25fe11ffdf5ce5a3da68cfa381752925",
+            }
+        },
         methods:
         {
-            callApi() {
-                axios.get("https://api.themoviedb.org/3/search/movie?query&api_key=25fe11ffdf5ce5a3da68cfa381752925")
+            callApi(ID,search)
+            {
+                axios.get(`https://api.themoviedb.org/3/search/movie?query="${search}"&api_key="${ID}"`)
                     .then(response => {
                         console.log(response.data);
                     })
                     .catch(err => {
-                        console.error(err.message) //log in console the error (if there are errors) just in case
+                        console.error(err.message)
                     })
             }
         }
