@@ -4,7 +4,7 @@ import axios from "axios";
 export default
     {
         name: "Button",
-        props: ["search"],
+        /* props: ["search"], */
         data()
         {
             return{
@@ -15,14 +15,22 @@ export default
         {
             callApi(ID,search)
             {
-                axios.get(`https://api.themoviedb.org/3/search/movie?query="${search}"&api_key="${ID}"`)
-                    .then(response => {
+                console.log(this.search,this.ID);
+
+                axios.get(`https://api.themoviedb.org/3/search/movie?query="${this.search}"&api_key="${this.ID}"`)
+                    .then(response =>
+                    {
                         console.log(response.data);
                     })
-                    .catch(err => {
+                    .catch(err =>
+                    {
                         console.error(err.message)
                     })
             }
+        },
+        mounted()
+        {
+            
         }
     }
 </script>
