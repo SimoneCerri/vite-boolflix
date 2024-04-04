@@ -20,14 +20,14 @@ export const store = reactive
                     {
                         this.noResultsErrFilm = true;
                     }
-                    console.log(response.data.results);
+                    //console.log(response.data.results);
                     this.resultsFilm = response.data.results
                     //#TO_DO: fix results, I stamp only first page
                     this.results = [...this.resultsFilm]
                 })
             axios.get(`https://api.themoviedb.org/3/search/tv?query=${this.search}&api_key=${this.ID}`)
             .then(response => {
-                console.log(response.data.results);
+                //console.log(response.data.results);
                 this.noResultsErrTv = false;
                 if (response.data.total_results == 0)
                 {
