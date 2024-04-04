@@ -61,7 +61,7 @@ export default
 
 <style scoped>
 #main {
-    height: calc(100vh - 200px);
+    height: calc(100vh - 120px);
     padding-top: 5em;
     overflow-y: scroll;
 
