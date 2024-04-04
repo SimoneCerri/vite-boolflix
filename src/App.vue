@@ -34,10 +34,21 @@ export default
             <li>Title: {{ result.title }}</li>
             <li>Original title: {{ result.original_title }}</li>
             <li>Vote: {{ (result.vote_average).toFixed(1) }}</li>
-            <li>Language: <span class="fi" :class="('fi-')+(result.original_language)"></span></li> <!-- damn () I trouble for hours around them. -->
+            <li>Language: <span class="fi" :class="('fi-')+(result.original_language)"></span></li>
+            <!-- damn () I trouble for hours around them. -->
             <!-- @TODO: some flags still bugged even if I change codes in "country.json" -->
             <br>
         </ul>
+    </div>
+    <div v-if="store.noResultsErrFilm">
+        <span>
+            No films found...
+        </span>
+    </div>
+    <div v-if="store.noResultsErrTv">
+        <span>
+            No TV shows found...
+        </span>
     </div>
 </template>
 
