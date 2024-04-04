@@ -10,7 +10,6 @@ export const store = reactive
         resultsFilm:[],
         noResultsErrTv:false,
         noResultsErrFilm: false,
-        img_url: "https://image.tmdb.org/t/p/w92",
 
         callApi(ID, search) {
             axios.get(`https://api.themoviedb.org/3/search/movie?query=${this.search}&api_key=${this.ID}`)
@@ -41,11 +40,6 @@ export const store = reactive
                 .catch(err => {
                     console.log(err);
                     console.error(err.message)
-                })
-            axios.get(`${this.img_url}${this.result.poster_path}`)
-            .then(response =>
-                {
-                    console.log("?");
                 })
             //console.log(this.results);
         }

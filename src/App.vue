@@ -2,8 +2,6 @@
 import Input from "./components/Input.vue";
 import Button from "./components/Button.vue";
 import { store } from "./store.js"
-import axios from "axios";
-
 
 export default
     {
@@ -16,28 +14,16 @@ export default
         data() {
             return {
                 store,
-                /* img_url: "https://image.tmdb.org/t/p/w92",
-                resultsPosters:"", */
+                img_url: "https://image.tmdb.org/t/p/w92",
             }
         },
         methods:
         {
-            /* callImageApi()
-            {
-                axios.get(img_url+result.poster_path)
-                .then(response => 
-                {
-                    this.resultsPosters = response
-                })
-            } */
+            
         },
         computed:
         {
-            /* getImage : function()
-            {
-                return this.img_url + this.poster_path
-
-            } */
+    
         }
     }
 </script>
@@ -53,7 +39,8 @@ export default
             <li>Vote: {{ (result.vote_average).toFixed(1) }}</li>
             <li>Language: <span class="fi" :class="('fi-') + (result.original_language)"></span></li>
             <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
-            <!-- <li>{{img_url}}{{ result.poster_path }}</li> -->
+            <li v-if="result.poster_path != null"><img :src="img_url+result.poster_path" alt=""></li>
+            <li v-else><img class="null_image" src="../public/img/null.webp" alt=""></li>
             <br>
         </ul>
     </div>
@@ -74,5 +61,12 @@ export default
     background-size: contain;
     background-position: 50%;
     background-repeat: no-repeat;
+}
+
+.null_image
+{
+    max-width: 92px;
+    height: 130px;
+    object-fit: cover;
 }
 </style>
