@@ -2,6 +2,7 @@
 import Input from "./components/Input.vue";
 import Button from "./components/Button.vue";
 import { store } from "./store.js"
+import axios from "axios";
 
 
 export default
@@ -15,12 +16,20 @@ export default
         data() {
             return {
                 store,
-                fi: "fi",
+                /* img_url: "https://image.tmdb.org/t/p/w92",
+                resultsPosters:"", */
             }
         },
         methods:
         {
-
+            /* callImageApi()
+            {
+                axios.get(img_url+result.poster_path)
+                .then(response => 
+                {
+                    this.resultsPosters = response
+                })
+            } */
         }
     }
 </script>
@@ -35,8 +44,8 @@ export default
             <li>Original title: {{ result.original_title || result.original_name }}</li>
             <li>Vote: {{ (result.vote_average).toFixed(1) }}</li>
             <li>Language: <span class="fi" :class="('fi-') + (result.original_language)"></span></li>
-            <!-- damn () I trouble for hours around them. -->
-            <!-- @TODO: some flags still bugged even if I change codes in "country.json" -->
+            <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
+            <!-- <li>{{img_url}}{{ result.poster_path }}</li> -->
             <br>
         </ul>
     </div>
