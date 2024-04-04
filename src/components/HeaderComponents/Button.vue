@@ -1,5 +1,5 @@
 <script>
-import {store} from "../store.js"
+import {store} from "../../store.js"
 
 export default
     {
@@ -25,4 +25,12 @@ export default
     <button @click="store.callApi()">SEARCH</button>
 </template>
 
-<style></style>
+<style scoped>
+button 
+{
+    border-style: none;
+    padding: 0.5em 1em;
+    background-color: white;
+    margin-right: 0.5em;
+}
+</style>

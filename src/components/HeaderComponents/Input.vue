@@ -1,5 +1,5 @@
 <script>
-import {store} from "../store.js";
+import {store} from "../../store.js";
 
 export default
 {
@@ -30,6 +30,11 @@ export default
     <input type="text" placeholder="Search..." v-model="search" @keyup="searchedName" @keyup.enter="searchedName;store.callApi()">
 </template>
 
-<style>
-
+<style scoped>
+input 
+{
+    border-style: none;
+    padding: 0.5em 1em;
+    margin-right: 0.25em;
+}
 </style>
