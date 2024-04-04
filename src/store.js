@@ -15,6 +15,7 @@ export const store = reactive
             axios.get(`https://api.themoviedb.org/3/search/movie?query=${this.search}&api_key=${this.ID}`)
                 .then(response => {
                     //console.log(response.data);
+                    this.noResultsErrFilm = false;
                     if (response.data.total_results == 0)
                     {
                         this.noResultsErrFilm = true;
@@ -26,7 +27,8 @@ export const store = reactive
                 })
             axios.get(`https://api.themoviedb.org/3/search/tv?query=${this.search}&api_key=${this.ID}`)
             .then(response => {
-                //console.log(response.data.results);
+                console.log(response.data.results);
+                this.noResultsErrTv = false;
                 if (response.data.total_results == 0)
                 {
                     this.noResultsErrTv = true;

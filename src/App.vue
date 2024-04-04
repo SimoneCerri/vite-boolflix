@@ -15,7 +15,7 @@ export default
         data() {
             return {
                 store,
-                fi:"fi",
+                fi: "fi",
             }
         },
         methods:
@@ -31,10 +31,10 @@ export default
     <div v-if="store.results.length > 0">
         <ul v-for="result in store.results">
             <br>
-            <li>Title: {{ result.title }}</li>
-            <li>Original title: {{ result.original_title }}</li>
+            <li>Title: {{ result.title || result.name }}</li>
+            <li>Original title: {{ result.original_title || result.original_name }}</li>
             <li>Vote: {{ (result.vote_average).toFixed(1) }}</li>
-            <li>Language: <span class="fi" :class="('fi-')+(result.original_language)"></span></li>
+            <li>Language: <span class="fi" :class="('fi-') + (result.original_language)"></span></li>
             <!-- damn () I trouble for hours around them. -->
             <!-- @TODO: some flags still bugged even if I change codes in "country.json" -->
             <br>
@@ -53,8 +53,7 @@ export default
 </template>
 
 <style>
-.fi
-{
+.fi {
     background-size: contain;
     background-position: 50%;
     background-repeat: no-repeat;
