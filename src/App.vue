@@ -30,6 +30,14 @@ export default
                     this.resultsPosters = response
                 })
             } */
+        },
+        computed:
+        {
+            /* getImage : function()
+            {
+                return this.img_url + this.poster_path
+
+            } */
         }
     }
 </script>
