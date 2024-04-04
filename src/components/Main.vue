@@ -10,6 +10,7 @@ export default
                 img_url: "https://image.tmdb.org/t/p/w342",
                 markup: "<i class='fa-solid fa-star' style='color: #fbff00;''></i>",
                 maxVote: 5,
+                hover:false,
             }
         },
         methods:
@@ -17,6 +18,11 @@ export default
             getRoundedVote(vote) {
                 return Math.ceil((vote.toFixed(1)) / 2)
             },
+            showInfos()
+            {
+                this.hover = !this.hover;
+                console.log(this.hover);
+            }
         }
     }
 </script>
@@ -28,10 +34,11 @@ export default
                 <div class="card">
                     <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
                     <div class="poster">
-                        <div v-if="result.poster_path != null"><img :src="img_url + result.poster_path" alt=""></div>
-                        <div v-else><img class="null_image" src="../../public/img/null.webp" alt=""></div>
+                        <div v-if="result.poster_path != null"><img :class="hover" :src="img_url + result.poster_path"
+                                alt="" @mouseover="showInfos()" @mouseleave="showInfos()"></div>
+                        <div v-else><img class=" null_image" src="../../public/img/null.webp" alt=""></div>
                     </div>
-                    <div class="info">
+                    <div v-if="this.hover" class="info">
                         <div>Title: {{ result.title || result.name }}</div>
                         <div>Original title: {{ result.original_title || result.original_name }}</div>
                         <div>Vote: {{ this.getRoundedVote(result.vote_average) }} / {{ maxVote }}</div>
@@ -77,16 +84,6 @@ export default
         background-repeat: no-repeat;
     }
 
-    .null_image {
-        max-width: 342px;
-        height: 513px;
-        object-fit: cover;
-    }
-
-    .vote_stars {
-        color: gold;
-    }
-
     .row {
         display: flex;
         flex-wrap: wrap;
@@ -97,21 +94,41 @@ export default
             width: calc((100% / 12) * 3);
 
             .card {
-                /* width: 100%; */
                 padding: 1em;
-
-                .poster {
-                    img {
+                position: relative;
+                
+                .poster
+                {
+                    img
+                    {
                         width: 100%;
-                        object-fit: cover;
+                        height: 100%;
+                        max-height: 450px;
+                        object-fit: cover ;
                     }
                 }
 
                 .info {
-                    display: none;
+                    padding: 0.5em;
+                    width: 80%;
+                    position: absolute;
+                    bottom: 5%;
+                    left: 5%;
+                    color: white;
+
+                    .vote_stars
+                    {
+                        color: gold;
+                    }
                 }
             }
         }
     }
+}
+
+.hover
+{
+    background-color: #333;
+    opacity: 50%;
 }
 </style>
