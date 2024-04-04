@@ -12,7 +12,11 @@
 
 
 /* #region Debug */
-
+body
+{
+   background-color: #333;
+   color: white;
+}
 /* #endregion Debug */
 
 
