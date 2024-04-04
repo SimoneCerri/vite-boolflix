@@ -2,6 +2,7 @@
 import Input from "./components/Input.vue";
 import Button from "./components/Button.vue";
 import { store } from "./store.js"
+import { pushScopeId } from "vue";
 
 export default
     {
@@ -15,23 +16,17 @@ export default
             return {
                 store,
                 img_url: "https://image.tmdb.org/t/p/w92",
-                /* prova:0,
-                markup: "<i class='fa-solid fa-star' style='color: #fbff00;''></i>", */
+                markup: "<i class='fa-solid fa-star' style='color: #fbff00;''></i>",
+                stars:[],
+                numb:0,
             }
         },
         methods:
         {
             getRoundedVote(vote)
             {
-                return prova = Math.ceil((vote.toFixed(1)) / 2)
+                return this.numb = Math.ceil((vote.toFixed(1)) / 2)
             },
-            /* displayStars()
-            {
-                for (let x = 0; x < this.prova; x++)
-                {
-                    const element = array[x];                  
-                }
-            } */
         },
         computed:
         {
