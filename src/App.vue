@@ -19,7 +19,10 @@ export default
         },
         methods:
         {
-            
+            getRoundedVote(vote)
+            {
+                return Math.ceil((vote.toFixed(1)) / 2)
+            }
         },
         computed:
         {
@@ -36,7 +39,7 @@ export default
             <br>
             <li>Title: {{ result.title || result.name }}</li>
             <li>Original title: {{ result.original_title || result.original_name }}</li>
-            <li>Vote: {{ Math.ceil(((result.vote_average).toFixed(1))/2) }}</li>
+            <li>Vote: {{this.getRoundedVote(result.vote_average)}}</li>
             <li>Language: <span class="fi" :class="('fi-') + (result.original_language)"></span></li>
             <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
             <li v-if="result.poster_path != null"><img :src="img_url+result.poster_path" alt=""></li>
