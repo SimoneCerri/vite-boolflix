@@ -22,5 +22,5 @@ export default
 </template>
 
 <style scoped>
-/* TO_DO: fix the VH */
+
 </style>

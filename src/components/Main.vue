@@ -1,50 +1,53 @@
 <script>
-import {store} from "../store.js"
+import { store } from "../store.js"
 
 export default
-{
-    name:"Main",
-    data()
     {
-        return {
-            store,
-            img_url: "https://image.tmdb.org/t/p/w342",
-            markup: "<i class='fa-solid fa-star' style='color: #fbff00;''></i>",
-            maxVote: 5,
-        }
-    },
-    methods:
-    {
-        getRoundedVote(vote) {
-            return Math.ceil((vote.toFixed(1)) / 2)
+        name: "Main",
+        data() {
+            return {
+                store,
+                img_url: "https://image.tmdb.org/t/p/w342",
+                markup: "<i class='fa-solid fa-star' style='color: #fbff00;''></i>",
+                maxVote: 5,
+            }
         },
+        methods:
+        {
+            getRoundedVote(vote) {
+                return Math.ceil((vote.toFixed(1)) / 2)
+            },
+        }
     }
-}
 </script>
 
 <template>
     <div id="main">
-        <div v-if="store.results.length > 0">
-            <ul v-for="result in store.results">
-                <br>
-                <li>Title: {{ result.title || result.name }}</li>
-                <li>Original title: {{ result.original_title || result.original_name }}</li>
-                <li>Vote: {{ this.getRoundedVote(result.vote_average) }} / {{ maxVote }}</li>
-                <div class="vote">
-                    <span v-for="n in (this.getRoundedVote(result.vote_average)) " class="vote_stars">
-                        &starf;
-                    </span>
-                    <span v-for="n in ((this.maxVote) - (this.getRoundedVote(result.vote_average)))" class="vote_stars">
-                        &star;
-                    </span>
+        <div v-if="store.results.length > 0" class="row">
+            <div v-for="result in store.results" class="col">
+                <div class="card">
+                    <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
+                    <div class="poster">
+                        <div v-if="result.poster_path != null"><img :src="img_url + result.poster_path" alt=""></div>
+                        <div v-else><img class="null_image" src="../../public/img/null.webp" alt=""></div>
+                    </div>
+                    <div class="info">
+                        <div>Title: {{ result.title || result.name }}</div>
+                        <div>Original title: {{ result.original_title || result.original_name }}</div>
+                        <div>Vote: {{ this.getRoundedVote(result.vote_average) }} / {{ maxVote }}</div>
+                        <div class="vote">
+                            <span v-for="n in (this.getRoundedVote(result.vote_average)) " class="vote_stars">
+                                &starf;
+                            </span>
+                            <span v-for="n in ((this.maxVote) - (this.getRoundedVote(result.vote_average)))"
+                                class="vote_stars">
+                                &star;
+                            </span>
+                        </div>
+                        <div>Language: <span class="fi" :class="('fi-') + (result.original_language)"></span></div>
+                    </div>
                 </div>
-                <li>Language: <span class="fi" :class="('fi-') + (result.original_language)"></span></li>
-                <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
-                <li v-if="result.poster_path != null"><img :src="img_url + result.poster_path" alt=""></li>
-                <li v-else><img class="null_image" src="../../public/img/null.webp" alt=""></li>
-                <li>{{ }}</li>
-                <br>
-            </ul>
+            </div>
         </div>
         <div v-if="store.noResultsErrFilm">
             <span>
@@ -62,8 +65,11 @@ export default
 <style scoped>
 #main {
     height: calc(100vh - 120px);
-    padding-top: 5em;
+    padding: 10em 0;
     overflow-y: scroll;
+    scrollbar-width: none;
+    width: 80%;
+    margin: 0 auto;
 
     .fi {
         background-size: contain;
@@ -79,6 +85,33 @@ export default
 
     .vote_stars {
         color: gold;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        .col {
+            width: calc((100% / 12) * 3);
+
+            .card {
+                /* width: 100%; */
+                padding: 1em;
+
+                .poster {
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .info {
+                    display: none;
+                }
+            }
+        }
     }
 }
 </style>
