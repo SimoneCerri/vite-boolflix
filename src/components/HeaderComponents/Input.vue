@@ -37,4 +37,9 @@ input
     padding: 0.5em 1em;
     margin-right: 0.25em;
 }
+
+input:focus
+{
+    outline: none;
+}
 </style>

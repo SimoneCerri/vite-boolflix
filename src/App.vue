@@ -1,7 +1,7 @@
 <script>
 import Header from "./components/Header.vue"
-import { store } from "./store.js"
-/* import { pushScopeId } from "vue"; */
+import Main from "./components/Main.vue"
+import Footer from "./components/Footer.vue"
 
 export default
     {
@@ -9,79 +9,18 @@ export default
         components:
         {
             Header,
+            Main,
+            Footer,
         },
-        data() {
-            return {
-                store,
-                img_url: "https://image.tmdb.org/t/p/w342",
-                markup: "<i class='fa-solid fa-star' style='color: #fbff00;''></i>",
-                maxVote:5,
-            }
-        },
-        methods:
-        {
-            getRoundedVote(vote) {
-                return Math.ceil((vote.toFixed(1)) / 2)
-            },
-        },
-        computed:
-        {
-
-        }
     }
 </script>
 
 <template>
-    <Header/>
-    <div v-if="store.results.length > 0">
-        <ul v-for="result in store.results">
-            <br>
-            <li>Title: {{ result.title || result.name }}</li>
-            <li>Original title: {{ result.original_title || result.original_name }}</li>
-            <li>Vote: {{ this.getRoundedVote(result.vote_average) }} / {{maxVote}}</li>
-            <div class="vote">
-                <span v-for="n in (this.getRoundedVote(result.vote_average)) " class="vote_stars">
-                    &starf;
-                </span>
-                <span v-for="n in ((this.maxVote) - (this.getRoundedVote(result.vote_average)))" class="vote_stars">
-                    &star;
-                </span>
-            </div>
-            <li>Language: <span class="fi" :class="('fi-') + (result.original_language)"></span></li>
-            <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
-            <li v-if="result.poster_path != null"><img :src="img_url + result.poster_path" alt=""></li>
-            <li v-else><img class="null_image" src="../public/img/null.webp" alt=""></li>
-            <li>{{ }}</li>
-            <br>
-        </ul>
-    </div>
-    <div v-if="store.noResultsErrFilm">
-        <span>
-            No films found...
-        </span>
-    </div>
-    <div v-if="store.noResultsErrTv">
-        <span>
-            No TV shows found...
-        </span>
-    </div>
+    <Header />
+    <Main />
+    <Footer />
 </template>
 
-<style>
-.fi {
-    background-size: contain;
-    background-position: 50%;
-    background-repeat: no-repeat;
-}
+<style scoped>
 
-.null_image {
-    max-width: 342px;
-    height: 513px;
-    object-fit: cover;
-}
-
-.vote_stars
-{
-    color: gold;   
-}
 </style>
