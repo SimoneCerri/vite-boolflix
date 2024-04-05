@@ -10,7 +10,8 @@ export default
                 img_url: "https://image.tmdb.org/t/p/w342",
                 markup: "<i class='fa-solid fa-star' style='color: #fbff00;''></i>",
                 maxVote: 5,
-                hover:false,
+                hover: false,
+                /* flags: ["it",] */
             }
         },
         methods:
@@ -18,11 +19,12 @@ export default
             getRoundedVote(vote) {
                 return Math.ceil((vote.toFixed(1)) / 2)
             },
-            showInfos()
-            {
+            showInfos() {
                 this.hover = !this.hover;
-                //console.log(this.hover);
-            }
+            },
+            /* flagInclude(flag) {
+                return this.flags.includes(flag)
+            } */
         }
     }
 </script>
@@ -34,24 +36,28 @@ export default
                 <div class="card">
                     <div class="poster">
                         <div v-if="result.poster_path != null"><img :class="hover" :src="img_url + result.poster_path"
-                            alt="" @mouseover="showInfos()" @mouseleave="showInfos()"></div>
-                            <div v-else><img class=" null_image" src="../../public/img/null.webp" alt=""></div>
-                        </div>
-                        <div v-if="this.hover" class="info">
-                            <div>Title: {{ result.title || result.name }}</div>
-                            <div>Original title: {{ result.original_title || result.original_name }}</div>
-                            <div>Vote: {{ this.getRoundedVote(result.vote_average) }} / {{ maxVote }}</div>
-                            <div class="vote">
-                                <span v-for="n in (this.getRoundedVote(result.vote_average)) " class="vote_stars">
-                                    &starf;
-                                </span>
-                                <span v-for="n in ((this.maxVote) - (this.getRoundedVote(result.vote_average)))"
+                                alt="" @mouseover="showInfos()" @mouseleave="showInfos()"></div>
+                        <div v-else><img class=" null_image" src="../../public/img/null.webp" alt=""></div>
+                    </div>
+                    <div v-if="this.hover" class="info">
+                        <div>Title: {{ result.title || result.name }}</div>
+                        <div>Original title: {{ result.original_title || result.original_name }}</div>
+                        <div>Vote: {{ this.getRoundedVote(result.vote_average) }} / {{ maxVote }}</div>
+                        <div class="vote">
+                            <span v-for="n in (this.getRoundedVote(result.vote_average)) " class="vote_stars">
+                                &starf;
+                            </span>
+                            <span v-for="n in ((this.maxVote) - (this.getRoundedVote(result.vote_average)))"
                                 class="vote_stars">
                                 &star;
                             </span>
                         </div>
                         <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
-                        <div>Language: <span>{{ result.original_language }}</span> <span class="fi" :class="('fi-') + (result.original_language)"></span> </div>
+                        <div>Language: <span>{{ result.original_language }}</span> <span class="fi" :class="('fi-') + (result.original_language)"></span>
+                            <!-- <span v-if="flagInclude(result.original_language)" class="fi"
+                                :class="('fi-') + (result.original_language)"></span>
+                            <span v-else></span> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -96,15 +102,13 @@ export default
             .card {
                 padding: 1em;
                 position: relative;
-                
-                .poster
-                {
-                    img
-                    {
+
+                .poster {
+                    img {
                         width: 100%;
                         height: 100%;
                         max-height: 450px;
-                        object-fit: fill ;
+                        object-fit: fill;
                     }
                 }
 
@@ -116,8 +120,7 @@ export default
                     left: 5%;
                     color: white;
 
-                    .vote_stars
-                    {
+                    .vote_stars {
                         color: gold;
                     }
                 }
@@ -126,8 +129,7 @@ export default
     }
 }
 
-.hover
-{
+.hover {
     background-color: #333;
     opacity: 50%;
 }
