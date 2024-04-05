@@ -32,5 +32,6 @@ button
     padding: 0.5em 1em;
     background-color: white;
     margin-right: 0.5em;
+    color: orange;
 }
 </style>

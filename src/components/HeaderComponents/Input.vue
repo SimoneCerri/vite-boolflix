@@ -36,10 +36,16 @@ input
     border-style: none;
     padding: 0.5em 1em;
     margin-right: 0.25em;
+    color: orange
 }
 
 input:focus
 {
     outline: none;
+}
+
+input::placeholder
+{
+    color: orange;
 }
 </style>
