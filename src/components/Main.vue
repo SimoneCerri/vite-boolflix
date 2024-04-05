@@ -31,7 +31,7 @@ export default
                             <img :src="img_url + result.poster_path" alt="">
                         </div>
                         <div v-else>
-                            <img class=" null_image" src="../../public/img/null.webp" alt="">
+                            <img class=" null_image" src="../../public/img/null.jpg" alt="">
                         </div>
                     </div>
                     <div class="info">
@@ -90,11 +90,18 @@ export default
         align-items: center;
 
         .col {
-            width: calc((100% / 12) * 3);
+            width: calc((100% / 12) * 2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             .card {
                 padding: 1em;
                 position: relative;
+                width: 300px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 .poster
                 {
@@ -102,19 +109,29 @@ export default
                     {
                         width: 100%;
                         height: 100%;
-                        max-height: 450px;
+                        object-fit: cover;
+                        box-shadow: 10px 10px 10px 0px rgba(255, 115, 0, 0.100);
+                    }
+
+                    .null_image
+                    {
+                        width: 100%;
+                        height: 100%;
                         object-fit: fill;
+                        box-shadow: 10px 10px 10px 0px rgba(255, 115, 0, 0.100);
                     }
                 }
 
                 .info {
-                    padding: 0.5em;
+                    padding: 1em;
                     width: 80%;
                     position: absolute;
                     bottom: 5%;
                     left: 5%;
                     color: white;
-                    
+                    overflow: hidden;
+                    max-height: 300px;
+      
                     div
                     {
                         padding: 0.25em 0;
