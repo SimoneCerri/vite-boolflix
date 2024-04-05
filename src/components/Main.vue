@@ -11,7 +11,7 @@ export default
                 markup: "<i class='fa-solid fa-star' style='color: #fbff00;''></i>",
                 maxVote: 5,
                 hover: false,
-                /* flags: ["it",] */
+                /* flags: ["it","fr","de","th","es"] */
             }
         },
         methods:
@@ -35,11 +35,11 @@ export default
             <div v-for="result in store.results" class="col">
                 <div class="card">
                     <div class="poster">
-                        <div v-if="result.poster_path != null"><img :class="hover" :src="img_url + result.poster_path"
-                                alt="" @mouseover="showInfos()" @mouseleave="showInfos()"></div>
+                        <div v-if="result.poster_path != null"><img :src="img_url + result.poster_path" alt=""
+                                @mouseover="showInfos()" @mouseleave="showInfos()"></div>
                         <div v-else><img class=" null_image" src="../../public/img/null.webp" alt=""></div>
                     </div>
-                    <div v-if="this.hover" class="info">
+                    <div class="info" :class="{active : this.hover}">
                         <div>Title: {{ result.title || result.name }}</div>
                         <div>Original title: {{ result.original_title || result.original_name }}</div>
                         <div>Vote: {{ this.getRoundedVote(result.vote_average) }} / {{ maxVote }}</div>
@@ -53,7 +53,8 @@ export default
                             </span>
                         </div>
                         <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
-                        <div>Language: <span>{{ result.original_language }}</span> <span class="fi" :class="('fi-') + (result.original_language)"></span>
+                        <div>Language: <span>{{ result.original_language }}</span> <span class="fi"
+                                :class="('fi-') + (result.original_language)"></span>
                             <!-- <span v-if="flagInclude(result.original_language)" class="fi"
                                 :class="('fi-') + (result.original_language)"></span>
                             <span v-else></span> -->
@@ -110,9 +111,15 @@ export default
                         max-height: 450px;
                         object-fit: fill;
                     }
+
+                    &.poster:hover {
+                        background-color: #333;
+                        opacity: 10%;
+                    }
                 }
 
                 .info {
+                    display: none;
                     padding: 0.5em;
                     width: 80%;
                     position: absolute;
@@ -124,13 +131,13 @@ export default
                         color: gold;
                     }
                 }
+                
+                .active
+                {
+                    display: block;
+                }
             }
         }
     }
-}
-
-.hover {
-    background-color: #333;
-    opacity: 50%;
 }
 </style>
