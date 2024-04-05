@@ -108,13 +108,17 @@ export default
                 }
 
                 .info {
-                    display: none;
                     padding: 0.5em;
                     width: 80%;
                     position: absolute;
                     bottom: 5%;
                     left: 5%;
                     color: white;
+                    
+                    div
+                    {
+                        padding: 0.25em 0;
+                    }
 
                     .vote_stars {
                         color: gold;
@@ -125,14 +129,25 @@ export default
     }
 }
 
+.card 
+{
+    .info
+    {
+        display: none;
+    }
+}
+/* THOSE 2 RULES DOESN'T WORK BEFORE IN CSS NESTING WTF !? */
 .card:hover
 {
-    background-color: #333;
-    opacity: 10%;
+    .poster
+    {
+        opacity: 10%;
+    }
 
-    &.info
+    .info
     {
         display: block;
+        color: white
     }
 }
 </style>
