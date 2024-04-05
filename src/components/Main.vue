@@ -10,8 +10,6 @@ export default
                 img_url: "https://image.tmdb.org/t/p/w342",
                 markup: "<i class='fa-solid fa-star' style='color: #fbff00;''></i>",
                 maxVote: 5,
-                hover: false,
-                /* flags: ["it","fr","de","th","es"] */
             }
         },
         methods:
@@ -19,12 +17,6 @@ export default
             getRoundedVote(vote) {
                 return Math.ceil((vote.toFixed(1)) / 2)
             },
-            showInfos() {
-                this.hover = !this.hover;
-            },
-            /* flagInclude(flag) {
-                return this.flags.includes(flag)
-            } */
         }
     }
 </script>
@@ -35,11 +27,14 @@ export default
             <div v-for="result in store.results" class="col">
                 <div class="card">
                     <div class="poster">
-                        <div v-if="result.poster_path != null"><img :src="img_url + result.poster_path" alt=""
-                                @mouseover="showInfos()" @mouseleave="showInfos()"></div>
-                        <div v-else><img class=" null_image" src="../../public/img/null.webp" alt=""></div>
+                        <div v-if="result.poster_path != null">
+                            <img :src="img_url + result.poster_path" alt="">
+                        </div>
+                        <div v-else>
+                            <img class=" null_image" src="../../public/img/null.webp" alt="">
+                        </div>
                     </div>
-                    <div class="info" :class="{active : this.hover}">
+                    <div class="info">
                         <div>Title: {{ result.title || result.name }}</div>
                         <div>Original title: {{ result.original_title || result.original_name }}</div>
                         <div>Vote: {{ this.getRoundedVote(result.vote_average) }} / {{ maxVote }}</div>
@@ -55,9 +50,6 @@ export default
                         <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
                         <div>Language: <span>{{ result.original_language }}</span> <span class="fi"
                                 :class="('fi-') + (result.original_language)"></span>
-                            <!-- <span v-if="flagInclude(result.original_language)" class="fi"
-                                :class="('fi-') + (result.original_language)"></span>
-                            <span v-else></span> -->
                         </div>
                     </div>
                 </div>
@@ -104,17 +96,14 @@ export default
                 padding: 1em;
                 position: relative;
 
-                .poster {
-                    img {
+                .poster
+                {
+                    img
+                    {
                         width: 100%;
                         height: 100%;
                         max-height: 450px;
                         object-fit: fill;
-                    }
-
-                    &.poster:hover {
-                        background-color: #333;
-                        opacity: 10%;
                     }
                 }
 
@@ -131,13 +120,19 @@ export default
                         color: gold;
                     }
                 }
-                
-                .active
-                {
-                    display: block;
-                }
             }
         }
+    }
+}
+
+.card:hover
+{
+    background-color: #333;
+    opacity: 10%;
+
+    &.info
+    {
+        display: block;
     }
 }
 </style>
