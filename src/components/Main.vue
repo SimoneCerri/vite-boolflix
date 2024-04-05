@@ -21,7 +21,7 @@ export default
             showInfos()
             {
                 this.hover = !this.hover;
-                console.log(this.hover);
+                //console.log(this.hover);
             }
         }
     }
@@ -32,26 +32,26 @@ export default
         <div v-if="store.results.length > 0" class="row">
             <div v-for="result in store.results" class="col">
                 <div class="card">
-                    <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
                     <div class="poster">
                         <div v-if="result.poster_path != null"><img :class="hover" :src="img_url + result.poster_path"
-                                alt="" @mouseover="showInfos()" @mouseleave="showInfos()"></div>
-                        <div v-else><img class=" null_image" src="../../public/img/null.webp" alt=""></div>
-                    </div>
-                    <div v-if="this.hover" class="info">
-                        <div>Title: {{ result.title || result.name }}</div>
-                        <div>Original title: {{ result.original_title || result.original_name }}</div>
-                        <div>Vote: {{ this.getRoundedVote(result.vote_average) }} / {{ maxVote }}</div>
-                        <div class="vote">
-                            <span v-for="n in (this.getRoundedVote(result.vote_average)) " class="vote_stars">
-                                &starf;
-                            </span>
-                            <span v-for="n in ((this.maxVote) - (this.getRoundedVote(result.vote_average)))"
+                            alt="" @mouseover="showInfos()" @mouseleave="showInfos()"></div>
+                            <div v-else><img class=" null_image" src="../../public/img/null.webp" alt=""></div>
+                        </div>
+                        <div v-if="this.hover" class="info">
+                            <div>Title: {{ result.title || result.name }}</div>
+                            <div>Original title: {{ result.original_title || result.original_name }}</div>
+                            <div>Vote: {{ this.getRoundedVote(result.vote_average) }} / {{ maxVote }}</div>
+                            <div class="vote">
+                                <span v-for="n in (this.getRoundedVote(result.vote_average)) " class="vote_stars">
+                                    &starf;
+                                </span>
+                                <span v-for="n in ((this.maxVote) - (this.getRoundedVote(result.vote_average)))"
                                 class="vote_stars">
                                 &star;
                             </span>
                         </div>
-                        <div>Language: <span class="fi" :class="('fi-') + (result.original_language)"></span></div>
+                        <!-- #TO_DO: some flags still bugged even if I change codes in "country.json" -->
+                        <div>Language: <span>{{ result.original_language }}</span> <span class="fi" :class="('fi-') + (result.original_language)"></span> </div>
                     </div>
                 </div>
             </div>
