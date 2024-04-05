@@ -36,11 +36,11 @@ export const store = reactive
                 this.resultsTv = response.data.results
                 //#TO_DO: fix results, I stamp only first page
                 this.results = [...this.resultsFilm,...this.resultsTv]
+                //console.log(this.results);
                 })
                 .catch(err => {
                     console.log(err);
                     console.error(err.message)
                 })
-            //console.log(this.results);
         }
     })
