@@ -100,6 +100,21 @@ export default
                 width: calc((100% / 12) * 3);
             }
 
+            @media screen and (max-width: 1024px) {
+                /* Small screens & Laptops */
+                width: calc((100% / 12) * 4);
+            }
+
+            @media screen and (max-width: 768px) {
+                /* iPads & Tablets */
+                width: calc((100% / 12) * 5);
+            }
+
+            @media screen and (max-width: 480px) {
+                /* Mobile */
+                width: calc((100% / 12) * 12);
+            }
+
             .card {
                 padding: 1em;
                 position: relative;
@@ -165,8 +180,6 @@ export default
     }
 }
 
-/* #region MediaQuery */
-
 /* #region Desktops & Large screens */
 @media screen and (max-width: 1200px) {
 
@@ -191,7 +204,11 @@ export default
 
 /* #region iPads & Tablets */
 @media screen and (max-width: 768px) {
+
     /* iPads & Tablets */
+    .col {
+        width: calc((100% / 12) * 5);
+    }
 }
 
 /* #endregion iPads & Tablets */
