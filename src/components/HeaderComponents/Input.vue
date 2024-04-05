@@ -1,51 +1,59 @@
 <script>
-import {store} from "../../store.js";
+import { store } from "../../store.js";
 
 export default
-{
-    name:"Input",
-    emits:["searched"],
-    data()
     {
-        return{
-            search:"",
-            store,
-        }
-    },
-    methods:
-    {
-        searchedName()
+        name: "Input",
+        emits: ["searched"],
+        data() {
+            return {
+                search: "",
+                store,
+            }
+        },
+        methods:
         {
-            store.search = this.search
+            searchedName() {
+                store.search = this.search
+            }
+        },
+        computed:
+        {
+
         }
-    },
-    computed:
-    {
-        
     }
-}
 </script>
 
 <template>
-    <input type="text" placeholder="Search..." v-model="search" @keyup="searchedName" @keyup.enter="searchedName;store.callApi()">
+    <input class="bar" type="text" placeholder="Search..." v-model="search" @keyup="searchedName"
+        @keyup.enter="searchedName; store.callApi()">
 </template>
 
 <style scoped>
-input 
-{
+input {
     border-style: none;
     padding: 0.5em 1em;
     margin-right: 0.25em;
     color: orange
 }
 
-input:focus
-{
+input:focus {
     outline: none;
 }
 
-input::placeholder
-{
+input::placeholder {
     color: orange;
+}
+
+.bar {
+    @media screen and (max-width: 768px) {
+        /* iPads & Tablets */
+        width: 60%;
+    }
+
+    @media screen and (max-width: 480px) {
+        /* iPads & Tablets */
+        width: 90%;
+    }
 }
 </style>

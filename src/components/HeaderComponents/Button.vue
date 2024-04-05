@@ -1,22 +1,20 @@
 <script>
-import {store} from "../../store.js"
+import { store } from "../../store.js"
 
 export default
     {
         name: "Button",
-        data()
-        {
-            return{
+        data() {
+            return {
                 store,
             }
         },
         methods:
         {
-    
+
         },
-        mounted()
-        {
-            
+        mounted() {
+
         }
     }
 </script>
@@ -26,12 +24,16 @@ export default
 </template>
 
 <style scoped>
-button 
-{
+button {
     border-style: none;
     padding: 0.5em 1em;
     background-color: white;
     margin-right: 0.5em;
     color: orange;
+
+    @media screen and (max-width: 480px) {
+        /* Mobile */
+        display: none;
+    }
 }
 </style>
