@@ -20,18 +20,18 @@ export default
                     </a>
                 </li>
                 <li>
-                    <a href="joke_1">
+                    <a href="#">
                         Google-search
                     </a>
                 </li>
                 <li>
-                    <a href="joke_2">
-                        Discord
+                    <a href="#">
+                        -----
                     </a>
                 </li>
                 <li>
-                    <a href="joke_3">
-                        ChatGPT
+                    <a href="#">
+                        -----
                     </a>
                 </li>
             </ul>

@@ -95,6 +95,11 @@ export default
             justify-content: center;
             align-items: center;
 
+            @media screen and (max-width: 1200px) {
+                /* Desktops & Large screens */
+                width: calc((100% / 12) * 3);
+            }
+
             .card {
                 padding: 1em;
                 position: relative;
@@ -103,18 +108,15 @@ export default
                 justify-content: center;
                 align-items: center;
 
-                .poster
-                {
-                    img
-                    {
+                .poster {
+                    img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
                         box-shadow: 10px 10px 10px 0px rgba(255, 115, 0, 0.100);
                     }
 
-                    .null_image
-                    {
+                    .null_image {
                         width: 100%;
                         height: 100%;
                         object-fit: fill;
@@ -131,9 +133,8 @@ export default
                     color: white;
                     overflow: hidden;
                     max-height: 300px;
-      
-                    div
-                    {
+
+                    div {
                         padding: 0.25em 0;
                     }
 
@@ -146,25 +147,61 @@ export default
     }
 }
 
-.card 
-{
-    .info
-    {
+.card {
+    .info {
         display: none;
     }
 }
+
 /* THOSE 2 RULES DOESN'T WORK BEFORE IN CSS NESTING WTF !? */
-.card:hover
-{
-    .poster
-    {
+.card:hover {
+    .poster {
         opacity: 10%;
     }
 
-    .info
-    {
+    .info {
         display: block;
         color: white
     }
 }
+
+/* #region MediaQuery */
+
+/* #region Desktops & Large screens */
+@media screen and (max-width: 1200px) {
+
+    /* Desktops & Large screens */
+    .col {
+        width: calc((100% / 12) * 3);
+    }
+}
+
+/* #endregion Desktops & Large screens */
+
+/* #region Small screens & Laptops */
+@media screen and (max-width: 1024px) {
+
+    /* Small screens & Laptops */
+    .col {
+        width: calc((100% / 12) * 4);
+    }
+}
+
+/* #endregion Small screens & Laptops */
+
+/* #region iPads & Tablets */
+@media screen and (max-width: 768px) {
+    /* iPads & Tablets */
+}
+
+/* #endregion iPads & Tablets */
+
+/* #region Mobile */
+@media screen and (max-width: 480px) {
+    /* Mobile */
+}
+
+/* #endregion Mobile */
+
+/* #endregion MediaQuery */
 </style>
