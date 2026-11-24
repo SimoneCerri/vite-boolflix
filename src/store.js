@@ -4,11 +4,11 @@ import axios from "axios";
 export const store = reactive
     ({
         search: "",
-        ID: "25fe11ffdf5ce5a3da68cfa381752925",
-        results:[],
-        resultsTv:[],
-        resultsFilm:[],
-        noResultsErrTv:false,
+        ID: "87fb0d3e51c777d304c7c698b35e4a4f",
+        results: [],
+        resultsTv: [],
+        resultsFilm: [],
+        noResultsErrTv: false,
         noResultsErrFilm: false,
 
         callApi(ID, search) {
@@ -16,8 +16,7 @@ export const store = reactive
                 .then(response => {
                     //console.log(response.data);
                     this.noResultsErrFilm = false;
-                    if (response.data.total_results == 0)
-                    {
+                    if (response.data.total_results == 0) {
                         this.noResultsErrFilm = true;
                     }
                     //console.log(response.data.results);
@@ -26,17 +25,16 @@ export const store = reactive
                     this.results = [...this.resultsFilm]
                 })
             axios.get(`https://api.themoviedb.org/3/search/tv?query=${this.search}&api_key=${this.ID}`)
-            .then(response => {
-                //console.log(response.data.results);
-                this.noResultsErrTv = false;
-                if (response.data.total_results == 0)
-                {
-                    this.noResultsErrTv = true;
-                }
-                this.resultsTv = response.data.results
-                //#TO_DO: fix results, I stamp only first page
-                this.results = [...this.resultsFilm,...this.resultsTv]
-                //console.log(this.results);
+                .then(response => {
+                    //console.log(response.data.results);
+                    this.noResultsErrTv = false;
+                    if (response.data.total_results == 0) {
+                        this.noResultsErrTv = true;
+                    }
+                    this.resultsTv = response.data.results
+                    //#TO_DO: fix results, I stamp only first page
+                    this.results = [...this.resultsFilm, ...this.resultsTv]
+                    //console.log(this.results);
                 })
                 .catch(err => {
                     console.log(err);

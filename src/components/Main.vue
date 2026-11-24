@@ -55,12 +55,13 @@ export default
                 </div>
             </div>
         </div>
-        <div v-if="store.noResultsErrFilm">
+        <div v-if="store.noResultsErrFilm" class="no_founds">
             <span>
                 No films found...
             </span>
         </div>
-        <div v-if="store.noResultsErrTv">
+        <br>
+        <div v-if="store.noResultsErrTv" class="no_founds">
             <span>
                 No TV shows found...
             </span>
@@ -81,6 +82,12 @@ export default
         background-size: contain;
         background-position: 50%;
         background-repeat: no-repeat;
+    }
+
+    .no_founds
+    {
+        text-align: center;
+        color: red;
     }
 
     .row {
