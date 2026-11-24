@@ -4,7 +4,7 @@ import axios from "axios";
 export const store = reactive
     ({
         search: "",
-        ID: "87fb0d3e51c777d304c7c698b35e4a4f",
+        ID: import.meta.env.VITE_TMDB_KEY,
         results: [],
         resultsTv: [],
         resultsFilm: [],
